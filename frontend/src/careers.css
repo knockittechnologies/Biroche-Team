@@ -1,0 +1,34 @@
+/* Careers */
+.careers-hero{padding:70px 0 90px;text-align:center;color:#fff;background:var(--orange);}
+.careers-hero h1{font-family:var(--font-display);font-weight:500;font-size:clamp(2.2rem,4.4vw,3.4rem);margin:14px 0;line-height:1.15;}
+.careers-hero p{max-width:640px;margin:14px auto 0;font-size:14px;line-height:1.7;color:rgba(255,255,255,0.9);}
+.careers-hero .eyebrow{color:rgba(255,255,255,0.9);font-size:13px;letter-spacing:.05em;text-transform:uppercase;font-weight:600;display:inline-flex;align-items:center;gap:8px;margin-bottom:8px;}
+
+.why-us{background:var(--cream);padding:90px 0;color:var(--ink);}
+.wu-head{text-align:center;margin-bottom:44px;}
+.wu-head .eyebrow{color:var(--orange);font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;font-weight:600;display:inline-flex;justify-content:center;gap:8px;margin-bottom:10px;}
+.wu-head h2{font-family:var(--font-display);font-weight:500;font-size:clamp(2rem,3.6vw,2.8rem);}
+.wu-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+.wu-img img{width:100%;border-radius:20px;filter:grayscale(1);}
+.wu-list{display:flex;flex-direction:column;gap:18px;}
+.wu-item{display:flex;align-items:center;gap:14px;font-size:16px;color:var(--ink);font-weight:500;}
+.wu-check{color:var(--orange);flex-shrink:0;}
+
+.looking{background:var(--orange);padding:90px 0 100px;color:#fff;}
+.lk-head{text-align:center;margin-bottom:50px;}
+.lk-head h2{font-family:var(--font-display);font-weight:500;font-size:clamp(2rem,3.6vw,2.8rem);line-height:1.15;}
+.lk-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:900px;margin:0 auto;}
+.lk-item{text-align:center;color:#fff;}
+.lk-icon{width:72px;height:72px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;}
+.lk-icon svg{width:56px;height:56px;color:#000;}
+.lk-label{font-size:14px;font-weight:600;line-height:1.35;}
+.lk-cta{text-align:center;max-width:640px;margin:44px auto 0;}
+.lk-cta p{font-size:13.5px;color:rgba(255,255,255,0.9);line-height:1.65;}
+.lk-cta h3{font-family:var(--font-display);font-weight:500;font-size:clamp(1.5rem,2.4vw,1.9rem);margin:16px 0 20px;color:#fff;}
+.apply-btn{display:inline-block;background:var(--dark);color:#fff;padding:14px 34px;border-radius:6px;font-weight:500;font-size:14px;transition:transform .25s ease;}
+.apply-btn:hover{background:#000;transform:translateY(-2px);}
+
+@media (max-width:900px){
+  .wu-grid{grid-template-columns:1fr;}
+  .lk-grid{grid-template-columns:1fr 1fr;}
+}
