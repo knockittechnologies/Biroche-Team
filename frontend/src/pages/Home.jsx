@@ -42,21 +42,11 @@ export default function Home() {
   const trackRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const textureY = useTransform(scrollYProgress, [0, 1], [0, 160]);
-  // The hero video is a real scroll-scrubbed frame sequence (ScrollScrubStage) —
-  // scrolling down plays it forward, scrolling back up reverses it. Its progress
-  // is driven by the scrub TRACK's own scroll range ("start start" to "end end"),
-  // not the whole hero section — that range starts the instant the video pins in
-  // place and ends at the exact scroll position where the pin releases (track
-  // bottom meets viewport bottom). So the sequence is mathematically guaranteed
-  // to land on its last frame exactly when the section lets go and scrolls on,
-  // instead of finishing early (or late) relative to whatever else is in the hero.
+  // The hero animation is a scroll-scrubbed frame sequence: scrolling down plays
+  // it forward, scrolling up reverses it. Progress is driven by the pinned track's
+  // own scroll range so it lands on the last frame exactly when the pin releases.
   const { scrollYProgress: trackProgress } = useScroll({ target: trackRef, offset: ["start start", "end end"] });
   const scrubProgress = useTransform(trackProgress, [0, 1], [0, 1], { clamp: true });
-  // The hero background is solid orange for its first 55%, then fades to peach.
-  // The scroll indicator sits pinned near the top of the viewport while that
-  // background scrolls past underneath it, so its colour is driven by the same
-  // stops as the gradient — white while it's over orange, fading to dark ink as
-  // the peach reaches it — so it's always readable against whatever is behind it.
   const indicatorColor = useTransform(scrollYProgress, [0, 0.55, 0.92], ["#ffffff", "#ffffff", "#3a2a1e"]);
   const indicatorOpacity = useTransform(scrollYProgress, [0, 0.85, 0.96], [1, 1, 0]);
 
@@ -69,7 +59,13 @@ export default function Home() {
   return (
     <div className="bt bt-page-peach home-v2" data-testid="home-page">
       {/* ===== Section 1 : Hero (brioche-bites assembly animation) ===== */}
-      <div className="hero hero-anim-only hero-with-video" ref={heroRef}>
+      <div
+        className="hero hero-anim-only hero-with-video"
+        ref={heroRef}
+        style={{ backgroundImage: "url(/brioche/hero/hero-illustrated-bg.jpg)" }}
+      >
+        {/* mobile-only portrait backdrop, pinned to the viewport while the hero scrolls */}
+        <div className="hero-bg-m" style={{ backgroundImage: "url(/brioche/hero/hero-bg-mobile.jpg)" }} aria-hidden="true" />
         <motion.div className="texture" style={{ y: textureY }} />
         <Header variant="orange" />
 
@@ -117,7 +113,7 @@ export default function Home() {
 
                 <ScrollScrubStage
                   progress={scrubProgress}
-                  posterSrc="/brioche/hero/brioche-hero-poster.jpg"
+                  posterSrc="/brioche/hero/brioche-hero-poster.webp"
                   className="hero-video"
                 />
 

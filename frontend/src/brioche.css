@@ -2,12 +2,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Poppins:wght@400;500;600;700&display=swap');
 
 :root{
-  --peach-1:#FFEBE3;
-  --peach-2:#FFF2EB;
+  /* The whole site's "light" background tone is this one salmon/tan color —
+     --cream, --peach-1 and --peach-2 are kept as separate variables (lots of
+     CSS already references them by name) but all three now resolve to the
+     same color, so every section that used to be a paler peach now matches
+     the Reviews section and .sec-bg-salmon exactly, site-wide. */
+  --peach-1:#F5C7A9;
+  --peach-2:#F5C7A9;
   --orange:#DF6029;
   --orange-dark:#C4531F;
   --dark:#1A1A1A;
-  --cream:#FFEFE5;
+  --cream:#F5C7A9;
   --ink:#000000;
   --nav-ink:#3B3B39;
   --white:#FFFFFF;
@@ -149,12 +154,45 @@ body{font-family:var(--font-body);color:var(--ink);-webkit-font-smoothing:antial
 .hero-anim-only{min-height:820px;display:flex;flex-direction:column;justify-content:center;}
 .hero-no-image{min-height:auto;padding-bottom:44px;justify-content:flex-start;}
 
-/* hero product-assembly video (brioche bites bowl) */
+/* hero product-assembly video (brioche bites bowl) — illustrated line-art
+   background (hand-drawn dessert doodles + grid) set inline via React style
+   (see Home.jsx) because CRA's css-loader can't resolve a public-path url()
+   written here. background-attachment:fixed keeps the illustration steady
+   while the page scrolls past it, like a parallax backdrop. A bottom fade
+   (the ::after below) blends the image down into the site's salmon tone so
+   there's no hard seam where the hero ends. */
 .hero-with-video{
+  position:relative;
   min-height:auto;
   padding-bottom:64px;
   justify-content:flex-start;
-  background:linear-gradient(180deg, #E4632C 0%, #E4632C 55%, #F6DFC9 100%);
+  background-color:#E4632C;
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position:center top;
+  background-attachment:fixed;
+}
+.hero-with-video::after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:0;
+  height:220px;
+  background:linear-gradient(180deg, rgba(245,199,169,0) 0%, #F5C7A9 100%);
+  pointer-events:none;
+  z-index:1;
+}
+/* mobile / tablet: use the portrait illustrated backdrop instead of the wide one.
+   It lives in a sticky, viewport-tall layer (iOS ignores background-attachment:fixed),
+   so it stays put behind the pinned bowl while the hero scrolls. */
+.hero-bg-m{display:none;}
+@media (max-width:860px){
+  .hero-with-video{background-image:none !important;}
+  .hero-bg-m{
+    display:block;position:sticky;top:0;height:100vh;height:100svh;
+    margin-bottom:-100vh;margin-bottom:-100svh;
+    background-size:cover;background-position:center top;background-repeat:no-repeat;
+    z-index:0;pointer-events:none;
+  }
 }
 .hero-video-content{position:relative;z-index:2;padding-top:24px;display:flex;flex-direction:column;align-items:center;text-align:center;}
 .hero-video-eyebrow{display:flex;justify-content:center;}
@@ -178,12 +216,18 @@ body{font-family:var(--font-body);color:var(--ink);-webkit-font-smoothing:antial
   width:100%;
 }
 .hero-video-frame{will-change:transform;}
+/* The frame sequence is now background-removed (transparent WebP), so the
+   bowl floats directly on the hero's own gradient with no card behind it —
+   no rounded corners or drop shadow, which would otherwise draw a visible
+   box around the transparent image. A drop-shadow filter instead shades
+   just the bowl's own silhouette, keeping it grounded on the page. */
+/* Animation scaled up 2x in width (4x the on-screen area): the frames carry a
+   lot of empty margin around the bowl, so the wrapper and canvas share one
+   large size and the side indicators are overlaid at the edges. */
 .hero-video{
-  width:min(640px,80vw);
+  width:min(747px,56vw);  /* frames are 1120x1000 (cropped to the bowl), shown at the same bowl size as before */
   height:auto;
   display:block;
-  border-radius:26px;
-  box-shadow:0 40px 80px -20px rgba(80,50,20,0.35), 0 10px 30px -8px rgba(80,50,20,0.22);
 }
 
 @media (max-width:900px){
@@ -217,11 +261,39 @@ body{font-family:var(--font-body);color:var(--ink);-webkit-font-smoothing:antial
   align-items:center;
   justify-content:center;
 }
-.hero-scrub-wrap{position:relative;width:min(640px,80vw);}
+.hero-scrub-wrap{
+  position:relative;
+  width:min(747px,56vw);
+  /* lift the bowl ~2 inches (192px) higher on the screen */
+  transform:translateY(calc(-1 * min(192px, 22vh)));
+}
+/* soft contact shadow directly under the bowl (replaces the old drop-shadow
+   filter, which smeared a dark halo around the bowl's sides) */
+.hero-scrub-wrap::before{
+  content:"";position:absolute;left:50%;top:92%;width:62%;height:8%;
+  transform:translateX(-50%);
+  background:radial-gradient(ellipse at center, rgba(60,20,0,0.38) 0%, rgba(60,20,0,0) 70%);
+  filter:blur(6px);pointer-events:none;
+}
+/* indicators overlaid on the left/right edges so they don't squeeze the
+   (now much larger) animation */
+@media (min-width:701px){.hero-video-stage-flanked{width:100%;max-width:1280px;}.hero-scrub-track,.hero-scrub-sticky{width:100%;max-width:100%;}}
+.hero-video-stage-flanked .hero-scroll-indicator-side{position:absolute;top:50%;transform:translateY(-50%);z-index:3;}
+.hero-video-stage-flanked .hero-scroll-indicator-side.left{left:3%;}
+.hero-video-stage-flanked .hero-scroll-indicator-side.right{right:3%;}
 @media (max-width:700px){
-  .hero-scrub-wrap{width:min(420px,84vw);}
+  /* full-bleed track so the big bowl never makes the page wider than the screen */
+  .hero-scrub-track{width:100%;margin-left:0;}
+  .hero-video-stage{width:100%;min-width:0;max-width:100%;}
+  .hero-scrub-sticky{overflow:hidden;width:100vw;margin-left:calc(50% - 50vw);}
+  .hero-scrub-wrap{width:min(118vw,560px);flex:none;margin:0;left:50%;transform:translate(-50%, calc(-1 * min(90px, 11vh)));align-self:flex-start;}
+  .hero-video-stage-flanked .hero-scroll-indicator-side.left{display:none;}
+  .hero-scrub-wrap .hero-video{width:100%;max-width:100%;}
+  .hero-video-stage-flanked .hero-scroll-indicator-side{position:static;transform:none;}
 }
 .hero-scrub-poster{position:absolute;top:0;left:0;}
+/* tablets: give the bowl more of the screen */
+@media (min-width:701px) and (max-width:1024px){.hero-scrub-wrap{width:min(680px,72vw);}}
 
 @media (max-width:700px){
   .hero-scrub-track{height:200vh;margin-top:0;}
@@ -584,7 +656,7 @@ body{font-family:var(--font-body);color:var(--ink);-webkit-font-smoothing:antial
   .hero-anim-wrap{margin:24px auto 12px;padding:0 16px;}
   .hero-video-content{padding-top:12px;}
   .hero-video-stage{margin:6px auto 28px;gap:6px;}
-  .hero-video{border-radius:18px;width:min(420px,84vw);}
+  .hero-video{width:100%;max-width:100%;}
   .hero-video-accent{width:30px;height:30px;}
   .scroll-cue{width:12px;height:12px;}
 }
