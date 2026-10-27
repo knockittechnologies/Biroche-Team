@@ -1,0 +1,18 @@
+/* ================= SCROLL SEQUENCE ANIMATION ================= */
+.anim-section{position:relative;background:#2A1608;}
+.anim-sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;}
+/* subtle radial glow behind the bowl */
+.anim-sticky::before{content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(1000px,90vw);height:min(700px,60vh);background:radial-gradient(circle at center, rgba(223,96,41,0.18), transparent 65%);pointer-events:none;filter:blur(4px);}
+.anim-head{position:absolute;top:8vh;left:0;right:0;text-align:center;z-index:3;pointer-events:none;padding:0 20px;}
+.anim-head .a-eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.65);font-weight:600;display:block;margin-bottom:12px;}
+.anim-head h2{font-family:var(--font-display);font-weight:500;font-size:clamp(1.9rem,3.6vw,3rem);color:#fff;line-height:1.15;}
+.anim-canvas{width:min(880px,92vw);height:auto;display:block;z-index:2;}
+.anim-hint{position:absolute;bottom:6vh;left:0;right:0;text-align:center;z-index:3;color:rgba(255,255,255,.55);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:10px;pointer-events:none;}
+.anim-hint .chev{width:20px;height:20px;color:rgba(255,255,255,.5);}
+.anim-progress{position:absolute;left:50%;transform:translateX(-50%);bottom:14vh;width:min(300px,60vw);height:2px;background:rgba(255,255,255,.18);border-radius:2px;overflow:hidden;z-index:3;}
+.anim-progress span{display:block;height:100%;background:#fff;width:0%;transform-origin:left;}
+
+@media (max-width:900px){
+  .anim-head{top:5vh;}
+  .anim-canvas{width:94vw;}
+}
