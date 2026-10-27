@@ -121,8 +121,3 @@
   .evp-grid{grid-template-columns:1fr;}
   .evp-big{min-height:280px;}
 }
-
-/* Full-image banner: the photo has its own headline baked in, so show all of it
-   (no side-cropping) at its natural proportions on every screen size. */
-.savour.savour-full-image{height:auto;padding:0;}
-.savour.savour-full-image img{position:static;display:block;width:100%;height:auto;object-fit:contain;}

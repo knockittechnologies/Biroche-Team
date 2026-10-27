@@ -3,8 +3,8 @@ import { useEffect, useRef, useState } from "react";
 // Renders the brioche-bites assembly sequence as a <canvas> and scrubs
 // through its frames as the visitor scrolls, instead of autoplaying on a
 // timer: scroll down plays it forward, scroll up reverses it.
-const FRAME_COUNT = 240;
-const framePath = (i) => `/brioche/hero/frames/frame-${String(i + 1).padStart(3, "0")}.webp`;
+const FRAME_COUNT = 300;
+const framePath = (i) => `/brioche/hero/frames/frame-${String(i + 1).padStart(3, "0")}.jpg`;
 
 export default function ScrollScrubStage({ progress, posterSrc, className }) {
   const canvasRef = useRef(null);
@@ -25,9 +25,6 @@ export default function ScrollScrubStage({ progress, posterSrc, className }) {
         canvas.width = img.naturalWidth;
         canvas.height = img.naturalHeight;
       }
-      // frames are transparent cutouts, so wipe the previous frame first —
-      // otherwise old pieces stay on the canvas and pile up as ghost images
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(img, 0, 0);
       drawnIndexRef.current = idx;
       return true;
