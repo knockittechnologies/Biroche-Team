@@ -158,3 +158,22 @@
 
 /* no pattern overlay on the hero — just the illustrated background */
 .home-v2 .hero-with-video .texture{display:none;}
+
+/* ===== Hero backdrop with floating dessert drawings ===== */
+.hero-art{position:absolute;inset:0;overflow:hidden;overflow:clip;z-index:0;pointer-events:none;}
+.hero-art-pin{position:sticky;top:0;width:100%;height:100vh;height:100svh;overflow:hidden;}
+.hero-art-stage{position:absolute;background-size:100% 100%;background-repeat:no-repeat;}
+/* "cover" the screen exactly like the old background did (desktop: centre top) */
+.hero-art-stage.d{left:50%;top:0;width:max(100%, calc(100vh * 2.0594));aspect-ratio:5760 / 2797;transform:translateX(-50%);}
+.hero-art-stage.m{display:none;left:50%;top:50%;width:max(100%, calc(100svh * 0.4615));aspect-ratio:1200 / 2600;transform:translate(-50%,-50%);}
+@media (max-width:860px){
+  .hero-art-stage.d{display:none;}
+  .hero-art-stage.m{display:block;}
+}
+.hero-doodle{position:absolute;height:auto;display:block;will-change:transform;
+  animation:hero-doodle-float var(--dur,7s) ease-in-out var(--delay,0s) infinite;}
+@keyframes hero-doodle-float{
+  0%,100%{transform:translate3d(0,0,0) rotate(0deg);}
+  50%{transform:translate3d(0,var(--dy,-12px),0) rotate(var(--rot,2deg));}
+}
+@media (prefers-reduced-motion: reduce){.hero-doodle{animation:none;}}
