@@ -1,7 +1,5 @@
-import InteriorLayout from "../components/InteriorLayout";
-import Reveal from "../components/Reveal";
+import LegalPage from "../components/LegalPage";
 import { INSTA } from "../lib/site";
-import "../legal.css";
 
 const SECTIONS = [
   { h: "Who We Are", items: ["The Brioche Team is a dessert brand.", "This Privacy Policy applies to all visitors of our website and prospective customers, including:", "Existing enquiries", "Events", "Corporate patrons", "Franchise applications", "Media enquiries", "Employment opportunities", "Other business enquiries"] },
@@ -13,7 +11,6 @@ const SECTIONS = [
   { h: "Sharing Your Information", items: ["We do not sell your personal information.", "We may share information with trusted third-party service providers, including:", "Website hosting providers", "IT support providers", "Analytics providers", "Professional advisers", "Government or regulatory authorities where required by law.", "All third parties are required to keep your information secure and confidential."] },
   { h: "Data Security", items: ["We take appropriate technical and organisational measures to protect your personal information from:", "Loss", "Unauthorised access", "Alteration", "Disclosure", "Misuse", "Although no data transmission is guaranteed we will implement effective controls to be reasonable secure."] },
   { h: "Data Retention", items: ["We only keep your personal information for as long as necessary for:", "Support businesses", "Fulfil legal obligations", "Resolve disputes", "Maintain business records", "When information is no longer required, it will be securely deleted or anonymised."] },
-  { h: "Your Rights", items: ["Under UK GDPR, you have the right to:", "Request access to your personal information.", "Request correction of your information.", "Request erasure of your personal information (where applicable).", "Request restriction of processing.", "Object to certain types of processing.", "Request transfer of your personal information.", "Withdraw consent (where processing is based on consent)."] },
   { h: "Your Rights", items: ["Under UK GDPR, you have the right to:", "Request access to your personal information.", "Request correction of inaccurate information.", "Request erasure of your personal information (where applicable).", "Request restriction of processing.", "Object to certain types of processing.", "Request transfer of your personal information.", "Withdraw consent (where processing is based on consent).", "To exercise any of these rights, please contact us using the details below."] },
   { h: "Third-Party Websites", items: ["Our website may contain links to external websites.", "We are not responsible for the privacy practices or content of these such websites.", "We encourage you to read their privacy policies before providing any personal information."] },
   { h: "Children's Privacy", items: ["Our website is not intended for children under the age of 13.", "We do not knowingly collect personal information from children.", "If we become aware that we have collected personal information, please contact us so that we can remove it."] },
@@ -25,23 +22,16 @@ const SECTIONS = [
 
 export default function Privacy() {
   return (
-    <InteriorLayout insta={INSTA.events} breadcrumb="Privacy policy">
-      <section className="legal sec-bg-orange" data-testid="privacy-page">
-        <div className="wrap">
-          <Reveal dir="up">
-            <span className="eyebrow" style={{ color: "rgba(255,255,255,0.9)" }}>✦ Join The Brioche Team</span>
-            <h1>Privacy Policy</h1>
-            <p className="lead">At The Brioche Team, we are committed to protecting your privacy and handling your personal information responsibly. This Privacy Policy explains how we collect, use, store and protect your information when you visit our website or contact us.</p>
-            <p className="lead">We are committed to complying with the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018.</p>
-          </Reveal>
-          {SECTIONS.map((s, i) => (
-            <Reveal className="legal-block" dir="up" delay={0.02 * i} key={i}>
-              <h2>{s.h}</h2>
-              <ul>{s.items.map((it, j) => <li key={j}>{it}</li>)}</ul>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-    </InteriorLayout>
+    <LegalPage
+      title="Privacy Policy"
+      breadcrumb="Privacy policy"
+      intro={[
+        "At The Brioche Team, we are committed to protecting your privacy and handling your personal information responsibly. This Privacy Policy explains how we collect, use, store and protect your information when you visit our website or contact us.",
+        "We are committed to complying with the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018.",
+      ]}
+      sections={SECTIONS}
+      insta={INSTA.events}
+      testId="privacy-page"
+    />
   );
 }

@@ -1,7 +1,5 @@
-import InteriorLayout from "../components/InteriorLayout";
-import Reveal from "../components/Reveal";
+import LegalPage from "../components/LegalPage";
 import { INSTA } from "../lib/site";
-import "../legal.css";
 
 const SECTIONS = [
   { h: "About Us", items: ["The Brioche Team is a dessert brand dedicated to creating handcrafted brioche-based desserts, as well as premium desserts in general, giving unforgettable customer experiences.", "This website has been created to provide information about:", "Our story", "Our menu", "Events", "Corporate catering", "Franchise opportunities", "Our locations", "Contact information", "This website is for informational purposes only and does not currently facilitate online purchases."] },
@@ -23,21 +21,13 @@ const SECTIONS = [
 
 export default function Terms() {
   return (
-    <InteriorLayout insta={INSTA.events} breadcrumb="Terms & Conditions">
-      <section className="legal sec-bg-orange" data-testid="terms-page">
-        <div className="wrap">
-          <Reveal dir="up">
-            <span className="eyebrow" style={{ color: "rgba(255,255,255,0.9)" }}>✦ Terms</span>
-            <h1>Terms &amp; Conditions</h1>
-          </Reveal>
-          {SECTIONS.map((s, i) => (
-            <Reveal className="legal-block" dir="up" delay={0.02 * i} key={i}>
-              <h2>{s.h}</h2>
-              <ul>{s.items.map((it, j) => <li key={j}>{it}</li>)}</ul>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-    </InteriorLayout>
+    <LegalPage
+      title="Terms & Conditions"
+      breadcrumb="Terms & Conditions"
+      intro={["Please read these terms carefully. By using this website you agree to them."]}
+      sections={SECTIONS}
+      insta={INSTA.events}
+      testId="terms-page"
+    />
   );
 }

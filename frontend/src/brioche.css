@@ -581,7 +581,7 @@ body{font-family:var(--font-body);color:var(--ink);-webkit-font-smoothing:antial
 .insta-head{padding:0 0 24px;}
 .insta-head .wrap{display:flex;align-items:center;gap:8px;font-size:14px;color:#fff;}
 .insta-head .handle{color:#fff;font-weight:500;}
-.insta-strip{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));}
+.insta-strip{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));overflow:hidden;}
 .insta-strip .cell{overflow:hidden;}
 .insta-strip img{width:100%;height:170px;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.22,.61,.36,1);}
 .insta-strip .cell:hover img{transform:scale(1.1);}
