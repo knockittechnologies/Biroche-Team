@@ -1,0 +1,36 @@
+/* Franchise — "We are looking for people who" follows the approved design:
+   dark panel, white display headline, peach card of illustrated icons. */
+.fr-partner{background:var(--dark);color:#fff;padding:120px 0;border-top:1px solid rgba(255,255,255,0.07);}
+.fr-partner .partner-grid{grid-template-columns:0.85fr 1.35fr;gap:72px;}
+.fr-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.04em;color:rgba(255,255,255,0.62);margin-bottom:22px;}
+.fr-eyebrow i{font-style:normal;color:var(--orange);font-size:15px;}
+.fr-partner .partner-left h2{color:#fff;font-family:var(--font-display);font-weight:400;font-size:clamp(2.4rem,4vw,3.5rem);line-height:1.18;letter-spacing:-0.01em;}
+
+.fr-card{background:#FFEFE5;border-radius:30px;padding:18px 24px;box-shadow:0 40px 80px -40px rgba(0,0,0,0.6);}
+.fr-card:hover{transform:none;box-shadow:0 40px 80px -40px rgba(0,0,0,0.6);}
+.fr-card .partner-icon-cell{padding:42px 22px 40px;border-left:1px solid rgba(223,96,41,0.16);display:flex;flex-direction:column;align-items:center;gap:20px;}
+.fr-card .partner-icon-cell:nth-child(3n+1){border-left:none;}
+.fr-card .partner-icon-grid > .partner-icon-cell:nth-child(n+4){border-top:1px solid rgba(223,96,41,0.16);}
+.fr-icon{width:64px;height:64px;object-fit:contain;display:block;transition:transform .5s cubic-bezier(.22,.61,.36,1);}
+.fr-card .partner-icon-cell:hover .fr-icon{transform:translateY(-4px);}
+.fr-card .partner-icon-cell span{font-size:15px;font-weight:500;color:#1d1410;line-height:1.45;max-width:210px;}
+
+/* Our Story: the tiramisu/croissant cards now sit directly on the orange */
+.story-col-right img[src$="franchise-2-cut.png"]{filter:drop-shadow(0 18px 24px rgba(70,25,5,0.25));}
+
+@media (max-width:860px){
+  .fr-partner{padding:80px 0;}
+  .fr-partner .partner-grid{grid-template-columns:1fr;gap:36px;}
+  .fr-card{padding:6px 8px;}
+  .fr-card .partner-icon-grid{grid-template-columns:1fr 1fr;}
+  .fr-card .partner-icon-cell{padding:30px 12px;border-left:none;border-top:1px solid rgba(223,96,41,0.16);}
+  .fr-card .partner-icon-grid > .partner-icon-cell:nth-child(-n+2){border-top:none;}
+  .fr-card .partner-icon-cell:nth-child(2n){border-left:1px solid rgba(223,96,41,0.16);}
+  .fr-icon{width:54px;height:54px;}
+  .fr-card .partner-icon-cell span{font-size:14px;}
+}
+
+/* Our Story centre: the finished bowl from the hero animation on a soft cream stage */
+.fr-story-center{background:radial-gradient(120% 90% at 50% 35%,#FFF6EE 0%,#FBE3D1 70%,#F6D2B9 100%);padding:34px 28px 26px;border-radius:28px;box-shadow:0 34px 60px -34px rgba(70,25,5,0.55);}
+.fr-story-center img{border-radius:0;object-fit:contain;filter:drop-shadow(0 22px 22px rgba(90,35,8,0.28));}
+.story-col-left img[src$="franchise-0-cut.png"]{filter:drop-shadow(0 18px 24px rgba(70,25,5,0.25));}

@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
-import { ConciergeBell, BadgeCheck, Handshake, Award, Headset, Gem } from "lucide-react";
 import InteriorLayout from "../components/InteriorLayout";
 import Reveal from "../components/Reveal";
 import EnquiryForm from "../components/EnquiryForm";
 import { INSTA } from "../lib/site";
+import "../franchise.css";
 
 const SUPPORT = [
   { h: "Comprehensive Training", items: ["Operations", "Food preparation", "Customer service", "Management", "Opening procedures"] },
@@ -14,12 +14,12 @@ const SUPPORT = [
 ];
 
 const PARTNER = [
-  { s: "Love hospitality", icon: <ConciergeBell strokeWidth={1.6} /> },
-  { s: "Value quality over shortcuts", icon: <BadgeCheck strokeWidth={1.6} /> },
-  { s: "Want to build a long-term business", icon: <Handshake strokeWidth={1.6} /> },
-  { s: "Have leadership experience", icon: <Award strokeWidth={1.6} /> },
-  { s: "Can deliver exceptional customer service", icon: <Headset strokeWidth={1.6} /> },
-  { s: "Want to grow with an exciting premium brand", icon: <Gem strokeWidth={1.6} /> },
+  { s: "Love hospitality", icon: "hospitality" },
+  { s: "Value quality over shortcuts", icon: "quality" },
+  { s: "Want to build a long-term business", icon: "long-term" },
+  { s: "Have leadership experience", icon: "leadership" },
+  { s: "Can deliver exceptional customer service", icon: "service" },
+  { s: "Want to grow with an exciting premium brand", icon: "premium" },
 ];
 
 export default function Franchise() {
@@ -56,13 +56,13 @@ export default function Franchise() {
             <Reveal className="story-col-left" dir="left" amplify={2}>
               <h3>From Redundancy to Revolution.</h3>
               <p>Two brothers lost their careers. Instead of searching for another job, they built a new future.</p>
-              <img src="/brioche/franchise-0.jpg" alt="Caramel cheesecake slice" loading="lazy" />
+              <img src="/brioche/franchise-0-cut.png" alt="Caramel cheesecake slice" loading="lazy" />
             </Reveal>
-            <Reveal className="story-col-center" dir="pop" delay={0.1}>
-              <img src="/brioche/index-0.png" alt="Brioche Bites bowl with chocolate and caramel drizzle" loading="lazy" />
+            <Reveal className="story-col-center fr-story-center" dir="pop" delay={0.1}>
+              <img src="/brioche/story-bowl.webp" alt="Brioche Bites bowl with chocolate and caramel drizzle" loading="lazy" />
             </Reveal>
             <Reveal className="story-col-right" dir="right" delay={0.2} amplify={2}>
-              <img src="/brioche/franchise-2.jpg" alt="Tiramisu and croissant" loading="lazy" />
+              <img src="/brioche/franchise-2-cut.png" alt="Tiramisu and croissant" loading="lazy" />
               <p>Driven by a lifelong passion for baking and years spent perfecting recipes behind closed doors, they created something the dessert world had never seen before.</p>
               <p className="bold-line">The original Brioche Bites.</p>
             </Reveal>
@@ -124,31 +124,24 @@ export default function Franchise() {
         </div>
       </section>
 
-      <section className="partner sec-bg-salmon">
+      <section className="partner fr-partner">
         <div className="wrap partner-grid">
-          <Reveal className="partner-left" dir="left" amplify={2}>
-            <span className="eyebrow">&#10022; Our Ideal Franchise Partner</span>
+          <Reveal className="partner-left" dir="left">
+            <span className="fr-eyebrow"><i>&#10022;</i> Our Ideal Franchise Partner</span>
             <h2>We are looking for people who:</h2>
           </Reveal>
-          <Reveal className="partner-card" dir="pop" delay={0.1}>
+          <Reveal className="partner-card fr-card" dir="up" delay={0.1}>
             <div className="partner-icon-grid">
               {PARTNER.map((p, i) => (
                 <motion.div
                   className="partner-icon-cell"
                   key={p.s}
-                  initial={{ opacity: 0, y: 26, scale: 0.8, rotate: -4 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.4 }}
-                  transition={{ duration: 0.6, delay: 0.15 + i * 0.09, ease: [0.34, 1.56, 0.64, 1] }}
-                  whileHover={{ y: -6, scale: 1.05 }}
+                  transition={{ duration: 0.6, delay: 0.1 + i * 0.07, ease: [0.22, 0.61, 0.36, 1] }}
                 >
-                  <motion.span
-                    className="partner-icon-glyph"
-                    whileHover={{ rotate: [0, -8, 8, -4, 0], scale: 1.12 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    {p.icon}
-                  </motion.span>
+                  <img className="fr-icon" src={`/brioche/partner/${p.icon}.png`} alt="" aria-hidden="true" />
                   <span>{p.s}</span>
                 </motion.div>
               ))}

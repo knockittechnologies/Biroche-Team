@@ -17,12 +17,12 @@ const LOCS = [
     map: "https://www.google.com/maps/search/?api=1&query=1st%20Floor%2C%20330%20Ladypool%20Rd%2C%20Sparkbrook%2C%20Birmingham%20B12%208JY",
   },
   {
-    img: "/brioche/locations-hall-green.jpg", h: "Hall Green", area: "Stratford Road \u00b7 Birmingham",
+    img: "/brioche/locations-hall-green.jpg", h: "Hall Green", ratio: "62.5%", area: "Stratford Road \u00b7 Birmingham",
     addr: ["1174 Stratford Rd, Hall Green,", "Birmingham B28 8AQ"],
     map: "https://www.google.com/maps/search/?api=1&query=1174%20Stratford%20Rd%2C%20Hall%20Green%2C%20Birmingham%20B28%208AQ",
   },
   {
-    img: "/brioche/locations-2.jpg", h: "Victoria Food Village", area: "Wolverhampton", soon: true,
+    img: "/brioche/locations-2.jpg", h: "Victoria Food Village", ratio: "56.5%", area: "Wolverhampton", soon: true,
     addr: ["Victoria Food Village,", "Wolverhampton"],
     map: "https://www.google.com/maps/search/?api=1&query=Victoria%20Food%20Village%2C%20Wolverhampton",
   },
@@ -46,7 +46,7 @@ export default function Locations() {
           <div className="wrap">
             {LOCS.map((l, i) => (
               <Reveal className={`locx-card${i % 2 ? " flip" : ""}`} dir="up" delay={i * 0.06} key={l.h}>
-                <div className="locx-media">
+                <div className={`locx-media${l.ratio ? " natural" : ""}`} style={l.ratio ? { "--r": l.ratio } : undefined}>
                   <img src={l.img} alt={l.h} loading="lazy" />
                 </div>
                 <div className="locx-body">
