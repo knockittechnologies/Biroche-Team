@@ -178,18 +178,3 @@
 }
 @media (max-width:860px){.hero-doodle{--amp:.6;}}
 @media (prefers-reduced-motion: reduce){.hero-doodle{animation:none;}}
-
-/* Soft square grid sitting just behind the bowl, fading out at its edges */
-.home-v2 .hero-scrub-wrap::after{
-  content:"";position:absolute;z-index:-1;pointer-events:none;
-  left:50%;top:58%;width:92%;aspect-ratio:1/0.78;transform:translate(-50%,-50%);
-  background-image:
-    linear-gradient(rgba(110,28,8,0.42) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(110,28,8,0.42) 1px,transparent 1px);
-  background-size:46px 46px;background-position:center center;
-  -webkit-mask-image:radial-gradient(ellipse at center,#000 30%,rgba(0,0,0,0.5) 55%,transparent 72%);
-          mask-image:radial-gradient(ellipse at center,#000 30%,rgba(0,0,0,0.5) 55%,transparent 72%);
-}
-@media (max-width:700px){
-  .home-v2 .hero-scrub-wrap::after{width:96%;background-size:30px 30px;}
-}
