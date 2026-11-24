@@ -65,7 +65,9 @@ export default function Home() {
         style={{ backgroundImage: "url(/brioche/hero/hero-illustrated-bg.jpg)" }}
       >
         {/* mobile-only portrait backdrop, pinned to the viewport while the hero scrolls */}
-        <div className="hero-bg-m" style={{ backgroundImage: "url(/brioche/hero/hero-bg-mobile.jpg)" }} aria-hidden="true" />
+        <div className="hero-bg-m-clip" aria-hidden="true">
+          <div className="hero-bg-m" style={{ backgroundImage: "url(/brioche/hero/hero-bg-mobile.jpg)" }} />
+        </div>
         <motion.div className="texture" style={{ y: textureY }} />
         <Header variant="orange" />
 

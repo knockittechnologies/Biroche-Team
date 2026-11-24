@@ -184,15 +184,18 @@ body{font-family:var(--font-body);color:var(--ink);-webkit-font-smoothing:antial
 /* mobile / tablet: use the portrait illustrated backdrop instead of the wide one.
    It lives in a sticky, viewport-tall layer (iOS ignores background-attachment:fixed),
    so it stays put behind the pinned bowl while the hero scrolls. */
-.hero-bg-m{display:none;}
+.hero-bg-m-clip{display:none;}
 @media (max-width:860px){
-  .hero-with-video{background-image:none !important;}
+  .hero-with-video{background-image:none !important;background-color:#C9622B;}
+  /* the clip layer is exactly the hero's size, so the pinned backdrop inside it
+     lets go when the hero ends and can never slide over the next section */
+  .hero-bg-m-clip{display:block;position:absolute;inset:0;overflow:hidden;overflow:clip;z-index:0;pointer-events:none;}
   .hero-bg-m{
-    display:block;position:sticky;top:0;height:100vh;height:100svh;
-    margin-bottom:-100vh;margin-bottom:-100svh;
+    position:sticky;top:0;height:100vh;height:100svh;width:100%;
     background-size:cover;background-position:center top;background-repeat:no-repeat;
-    z-index:0;pointer-events:none;
   }
+  /* centre the pinned bowl in the visible screen (iOS toolbars included) */
+  .hero-scrub-sticky{min-height:100vh;min-height:100svh;}
 }
 .hero-video-content{position:relative;z-index:2;padding-top:24px;display:flex;flex-direction:column;align-items:center;text-align:center;}
 .hero-video-eyebrow{display:flex;justify-content:center;}

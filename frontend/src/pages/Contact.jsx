@@ -45,8 +45,8 @@ export default function Contact() {
               <p style={{ marginTop: 30 }}>1st Floor, 330 Ladypool Rd, Sparkbrook, Birmingham B12 8JY</p>
             </Reveal>
             <Reveal className="ct-card" dir="up" delay={0.16}>
-              <h3>Coming soon</h3>
-              <p style={{ marginTop: 30 }}>Andalusia Food Park, Warwick Rd, Tyseley, Birmingham B11 2HP</p>
+              <h3>Hall Green</h3>
+              <p style={{ marginTop: 30 }}>1174 Stratford Rd, Hall Green, Birmingham B28 8AQ</p>
             </Reveal>
           </div>
         </div>

@@ -16,9 +16,9 @@ const LOCS = [
     map: "https://www.google.com/maps/search/?api=1&query=1st%20Floor%2C%20330%20Ladypool%20Rd%2C%20Sparkbrook%2C%20Birmingham%20B12%208JY",
   },
   {
-    img: "/brioche/locations-1.jpg", h: "Andalusia Food Park",
-    addr: ["Andalusia Food Park, Warwick Rd,", "Tyseley, Birmingham B11 2HP"],
-    map: "https://www.google.com/maps/search/?api=1&query=Andalusia%20Food%20Park%2C%20Warwick%20Rd%2C%20Tyseley%2C%20Birmingham%20B11%202HP",
+    img: "/brioche/locations-hall-green.jpg", h: "Hall Green",
+    addr: ["1174 Stratford Rd, Hall Green,", "Birmingham B28 8AQ"],
+    map: "https://www.google.com/maps/search/?api=1&query=1174%20Stratford%20Rd%2C%20Hall%20Green%2C%20Birmingham%20B28%208AQ",
   },
   {
     img: "/brioche/locations-2.jpg", h: "Coming soon",
