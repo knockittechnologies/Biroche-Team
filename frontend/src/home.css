@@ -170,10 +170,14 @@
   .hero-art-stage.d{display:none;}
   .hero-art-stage.m{display:block;}
 }
-.hero-doodle{position:absolute;height:auto;display:block;will-change:transform;
-  animation:hero-doodle-float var(--dur,7s) ease-in-out var(--delay,0s) infinite;}
+.hero-doodle{--amp:1;position:absolute;height:auto;display:block;will-change:transform;
+  animation:hero-doodle-float var(--dur,9s) ease-in-out var(--delay,0s) infinite;}
+/* a soft looping drift: up and across, a gentle tilt, then back */
 @keyframes hero-doodle-float{
   0%,100%{transform:translate3d(0,0,0) rotate(0deg);}
-  50%{transform:translate3d(0,var(--dy,-12px),0) rotate(var(--rot,2deg));}
+  25%{transform:translate3d(calc(var(--dx,14px) * var(--amp)),calc(var(--dy,-40px) * 0.55 * var(--amp)),0) rotate(var(--rot,5deg));}
+  50%{transform:translate3d(calc(var(--dx,14px) * 0.2 * var(--amp)),calc(var(--dy,-40px) * var(--amp)),0) rotate(calc(var(--rot,5deg) * -0.4));}
+  75%{transform:translate3d(calc(var(--dx,14px) * -0.8 * var(--amp)),calc(var(--dy,-40px) * 0.45 * var(--amp)),0) rotate(calc(var(--rot,5deg) * -0.9));}
 }
+@media (max-width:860px){.hero-doodle{--amp:.6;}}
 @media (prefers-reduced-motion: reduce){.hero-doodle{animation:none;}}

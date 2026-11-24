@@ -40,21 +40,21 @@ const REVIEWS = [
 // Dessert drawings lifted off the hero background so they can float.
 // l/t/w are percentages of the background image they were cut from.
 const DOODLES_D = [
-  { src: "/brioche/hero/doodles/d1.webp", l: 2.847, t: 9.939, w: 11.163, dur: 7.5, delay: 0, dy: -14, rot: -2.2 },
-  { src: "/brioche/hero/doodles/d2.webp", l: 13.576, t: 29.281, w: 5.347, dur: 6.2, delay: -1.4, dy: -10, rot: 3 },
-  { src: "/brioche/hero/doodles/d3.webp", l: 12.726, t: 40.257, w: 13.385, dur: 8.4, delay: -2.6, dy: -16, rot: 1.6 },
-  { src: "/brioche/hero/doodles/d4.webp", l: 2.326, t: 60.708, w: 19.201, dur: 7.0, delay: -0.8, dy: -12, rot: -1.8 },
-  { src: "/brioche/hero/doodles/d5.webp", l: 78.281, t: 5.506, w: 17.413, dur: 8.8, delay: -3.2, dy: -15, rot: 2 },
-  { src: "/brioche/hero/doodles/d6.webp", l: 73.49, t: 31.391, w: 14.219, dur: 6.8, delay: -1.9, dy: -13, rot: -2.4 },
-  { src: "/brioche/hero/doodles/d7.webp", l: 81.753, t: 61.137, w: 12.726, dur: 7.8, delay: -4.1, dy: -14, rot: 1.8 },
+  { src: "/brioche/hero/doodles/d1.webp", l: 2.847, t: 9.939, w: 11.163, dur: 9, delay: 0, dy: -42, dx: 16, rot: 5 },
+  { src: "/brioche/hero/doodles/d2.webp", l: 13.576, t: 29.281, w: 5.347, dur: 7.5, delay: -1.6, dy: -34, dx: -14, rot: -6 },
+  { src: "/brioche/hero/doodles/d3.webp", l: 12.726, t: 40.257, w: 13.385, dur: 10, delay: -3, dy: -46, dx: 18, rot: 4 },
+  { src: "/brioche/hero/doodles/d4.webp", l: 2.326, t: 60.708, w: 19.201, dur: 8.5, delay: -1, dy: -38, dx: -16, rot: -5 },
+  { src: "/brioche/hero/doodles/d5.webp", l: 78.281, t: 5.506, w: 17.413, dur: 10.5, delay: -4, dy: -44, dx: 15, rot: 5.5 },
+  { src: "/brioche/hero/doodles/d6.webp", l: 73.49, t: 31.391, w: 14.219, dur: 8, delay: -2.2, dy: -40, dx: -18, rot: -4.5 },
+  { src: "/brioche/hero/doodles/d7.webp", l: 81.753, t: 61.137, w: 12.726, dur: 9.5, delay: -5, dy: -36, dx: 14, rot: 6 },
 ];
 const DOODLES_M = [
-  { src: "/brioche/hero/doodles/m1.webp", l: 0.0, t: 20.692, w: 26.5, dur: 7.5, delay: 0, dy: -14, rot: -2.2 },
-  { src: "/brioche/hero/doodles/m2.webp", l: 0.0, t: 48.038, w: 15.833, dur: 6.2, delay: -1.4, dy: -10, rot: 3 },
-  { src: "/brioche/hero/doodles/m3.webp", l: 0.0, t: 69.231, w: 29.333, dur: 8.4, delay: -2.6, dy: -16, rot: 1.6 },
-  { src: "/brioche/hero/doodles/m4.webp", l: 79.5, t: 23.231, w: 20.5, dur: 7.0, delay: -0.8, dy: -12, rot: -1.8 },
-  { src: "/brioche/hero/doodles/m5.webp", l: 82.583, t: 41.154, w: 17.417, dur: 8.8, delay: -3.2, dy: -15, rot: 2 },
-  { src: "/brioche/hero/doodles/m6.webp", l: 79.0, t: 67.769, w: 21.0, dur: 6.8, delay: -1.9, dy: -13, rot: -2.4 },
+  { src: "/brioche/hero/doodles/m1.webp", l: 0.0, t: 20.692, w: 26.5, dur: 9, delay: 0, dy: -42, dx: 16, rot: 5 },
+  { src: "/brioche/hero/doodles/m2.webp", l: 0.0, t: 48.038, w: 15.833, dur: 7.5, delay: -1.6, dy: -34, dx: -14, rot: -6 },
+  { src: "/brioche/hero/doodles/m3.webp", l: 0.0, t: 69.231, w: 29.333, dur: 10, delay: -3, dy: -46, dx: 18, rot: 4 },
+  { src: "/brioche/hero/doodles/m4.webp", l: 79.5, t: 23.231, w: 20.5, dur: 8.5, delay: -1, dy: -38, dx: -16, rot: -5 },
+  { src: "/brioche/hero/doodles/m5.webp", l: 82.583, t: 41.154, w: 17.417, dur: 10.5, delay: -4, dy: -44, dx: 15, rot: 5.5 },
+  { src: "/brioche/hero/doodles/m6.webp", l: 79.0, t: 67.769, w: 21.0, dur: 8, delay: -2.2, dy: -40, dx: -18, rot: -4.5 },
 ];
 
 const Doodles = ({ list }) =>
@@ -64,7 +64,7 @@ const Doodles = ({ list }) =>
       className="hero-doodle"
       src={d.src}
       alt=""
-      style={{ left: d.l + "%", top: d.t + "%", width: d.w + "%", "--dur": d.dur + "s", "--delay": d.delay + "s", "--dy": d.dy + "px", "--rot": d.rot + "deg" }}
+      style={{ left: d.l + "%", top: d.t + "%", width: d.w + "%", "--dur": d.dur + "s", "--delay": d.delay + "s", "--dy": d.dy + "px", "--dx": d.dx + "px", "--rot": d.rot + "deg" }}
     />
   ));
 
