@@ -127,10 +127,34 @@
 .savour.savour-full-image{height:auto;padding:0;}
 .savour.savour-full-image img{position:static;display:block;width:100%;height:auto;object-fit:contain;}
 
-/* Hero flows straight into a solid brand-orange marquee strip */
+/* Hero flows into a refined brand-orange marquee band: fine cream rules,
+   wide-tracked uppercase serif, small star separators, soft faded edges */
+.home-v2 .marquee.on-orange{
+  position:relative;background:linear-gradient(180deg,#D85A24 0%,#CF5320 100%);
+  border:none;padding:10px 0;
+}
+.home-v2 .marquee.on-orange::before,.home-v2 .marquee.on-orange::after{
+  content:"";position:absolute;left:0;right:0;height:1px;background:rgba(255,236,214,0.42);
+}
+.home-v2 .marquee.on-orange::before{top:8px;}
+.home-v2 .marquee.on-orange::after{bottom:8px;}
+.home-v2 .marquee.on-orange .marquee-track{padding:24px 0;}
+.home-v2 .marquee.on-orange .marquee-item{
+  color:#FFF4E8;font-weight:400;text-transform:uppercase;
+  font-size:clamp(1.05rem,1.9vw,1.55rem);letter-spacing:.2em;
+  padding:0 44px;gap:88px;
+}
+.home-v2 .marquee.on-orange .marquee-item .dot{
+  width:14px;height:14px;border-radius:0;background:rgba(255,232,205,0.9);
+  clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%);
+}
+@media (max-width:700px){
+  .home-v2 .marquee.on-orange .marquee-track{padding:18px 0;}
+  .home-v2 .marquee.on-orange .marquee-item{letter-spacing:.16em;padding:0 26px;gap:52px;}
+  .home-v2 .marquee.on-orange .marquee-item .dot{width:11px;height:11px;}
+}
+
 .home-v2 .hero-with-video::after{display:none;}
-.home-v2 .marquee.on-orange{background:var(--orange);border-top:1px solid rgba(255,255,255,0.16);border-bottom:none;padding:30px 0;}
-.home-v2 .marquee.on-orange .marquee-item{color:#fff;font-weight:500;letter-spacing:-0.005em;}
-.home-v2 .marquee.on-orange .marquee-item .dot{width:8px;height:8px;background:rgba(255,255,255,0.85);}
+
 /* no pattern overlay on the hero — just the illustrated background */
 .home-v2 .hero-with-video .texture{display:none;}

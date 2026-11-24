@@ -29,10 +29,10 @@ const STATS = [
 ];
 
 const REVIEWS = [
+  { p: "Absolutely the best Banana Pudding outside of New York. Rich, creamy and worth every mile of the trip. The Brioche Bites steal the show every single time.", name: "Amy Ba" },
   { p: "We tried the Mr. Brioche special which was 10/10 and the customer service was great. We will definitely be returning!", name: "Ayesha Kazi" },
   { p: "The best desserts in town hands down. I thought the original banana pudding was the best thing I've tasted until I tried the kinder version! Safe to say I will never have any other dessert again. The brothers here are hands down the most amazing people you'll come across.", name: "Ali ahmed" },
   { p: "lovely food park, lovely trailer, lovely team too. the brioche bite are the best treat ever, the banana pudding is full marks too, highly recommended, see you again soo guys!", name: "Mo Afzal" },
-  { p: "Absolutely the best Banana Pudding outside of New York. Rich, creamy and worth every mile of the trip. The Brioche Bites steal the show every single time.", name: "Amy Ba" },
   { p: "The Brioche Team have set a new standard for luxury desserts in the UK. Every visit feels like an event — friendly service, immaculate presentation and flavours you cannot find anywhere else.", name: "Camryn Ikonda" },
   { p: "Warm, welcoming and impossibly delicious. My family has become regulars. If you only try one thing, make it the Banana Pudding — but honestly, order everything on the menu.", name: "Amina Quran" },
 ];
@@ -141,6 +141,7 @@ export default function Home() {
       {/* ===== Section 2 : Marquee ===== */}
       <Marquee
         onOrange
+        duration={48}
         items={["Invented Brioche Bites", "UK's Best Banana Pudding", "UK's Fastest Growing Dessert Brand"]}
       />
 
