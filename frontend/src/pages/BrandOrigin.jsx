@@ -66,7 +66,7 @@ export default function BrandOrigin() {
       </section>
 
       <Reveal dir="none" amount={0.05}>
-        <img className="story-photo-full" src="/brioche/brand-origin-4.jpg" alt="The Brioche Team restaurant interior" loading="lazy" />
+        <img className="story-photo-full" src="/brioche/brand-origin-interior.jpg" alt="The Brioche Team restaurant interior" loading="lazy" />
       </Reveal>
 
       <section className="more-dessert sec-bg-peach">

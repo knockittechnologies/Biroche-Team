@@ -12,7 +12,7 @@ const Arrow = () => (
 
 const LOCS = [
   {
-    img: "/brioche/locations-0.jpg", h: "Flagship Store", ratio: "56.25%", area: "Sparkbrook \u00b7 Birmingham",
+    img: "/brioche/locations-0.jpg", h: "Flagship Store", ratio: "44.5%", area: "Sparkbrook \u00b7 Birmingham",
     addr: ["1st Floor, 330 Ladypool Rd, Sparkbrook,", "Birmingham B12 8JY"],
     map: "https://www.google.com/maps/search/?api=1&query=1st%20Floor%2C%20330%20Ladypool%20Rd%2C%20Sparkbrook%2C%20Birmingham%20B12%208JY",
   },
