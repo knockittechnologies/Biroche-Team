@@ -179,8 +179,8 @@ export default function Home() {
       {/* ===== Section 2 : Marquee ===== */}
       <Marquee
         onOrange
-        duration={48}
-        items={["Invented Brioche Bites", "UK's Best Banana Pudding", "UK's Fastest Growing Dessert Brand"]}
+        duration={64}
+        items={["Invented Brioche Bites", "UK's Best Banana Pudding", "UK's Fastest Growing Dessert Brand", "Invented Brioche Bites", "UK's Best Banana Pudding", "UK's Fastest Growing Dessert Brand"]}
       />
 
       {/* ===== Section 3 : Customers Reviews ===== */}
