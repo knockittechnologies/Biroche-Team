@@ -192,7 +192,7 @@ body{font-family:var(--font-body);color:var(--ink);-webkit-font-smoothing:antial
   .hero-bg-m-clip{display:block;position:absolute;inset:0;overflow:hidden;overflow:clip;z-index:0;pointer-events:none;}
   .hero-bg-m{
     position:sticky;top:0;height:100vh;height:100svh;width:100%;
-    background-size:cover;background-position:center top;background-repeat:no-repeat;
+    background-size:cover;background-position:center center;background-repeat:no-repeat;
   }
   /* centre the pinned bowl in the visible screen (iOS toolbars included) */
   .hero-scrub-sticky{min-height:100vh;min-height:100svh;}
@@ -281,9 +281,11 @@ body{font-family:var(--font-body);color:var(--ink);-webkit-font-smoothing:antial
 /* indicators overlaid on the left/right edges so they don't squeeze the
    (now much larger) animation */
 @media (min-width:701px){.hero-video-stage-flanked{width:100%;max-width:1280px;}.hero-scrub-track,.hero-scrub-sticky{width:100%;max-width:100%;}}
-.hero-video-stage-flanked .hero-scroll-indicator-side{position:absolute;top:50%;transform:translateY(-50%);z-index:3;}
-.hero-video-stage-flanked .hero-scroll-indicator-side.left{left:3%;}
-.hero-video-stage-flanked .hero-scroll-indicator-side.right{right:3%;}
+.hero-video-stage-flanked .hero-scroll-indicator-side{position:absolute;top:50%;transform:translateY(-50%);z-index:3;white-space:nowrap;}
+/* indicators sit a clear ~2in (190px) outside the bowl on each side;
+   bowl half-width = canvas width x 430/1120 */
+.hero-video-stage-flanked .hero-scroll-indicator-side.left{left:auto;right:calc(50% + min(287px, 21.5vw) + min(190px, 12vw));}
+.hero-video-stage-flanked .hero-scroll-indicator-side.right{right:auto;left:calc(50% + min(287px, 21.5vw) + min(190px, 12vw));}
 @media (max-width:700px){
   /* full-bleed track so the big bowl never makes the page wider than the screen */
   .hero-scrub-track{width:100%;margin-left:0;}

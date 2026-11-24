@@ -126,3 +126,11 @@
    (no side-cropping) at its natural proportions on every screen size. */
 .savour.savour-full-image{height:auto;padding:0;}
 .savour.savour-full-image img{position:static;display:block;width:100%;height:auto;object-fit:contain;}
+
+/* Hero flows straight into a solid brand-orange marquee strip */
+.home-v2 .hero-with-video::after{display:none;}
+.home-v2 .marquee.on-orange{background:var(--orange);border-top:1px solid rgba(255,255,255,0.16);border-bottom:none;padding:30px 0;}
+.home-v2 .marquee.on-orange .marquee-item{color:#fff;font-weight:500;letter-spacing:-0.005em;}
+.home-v2 .marquee.on-orange .marquee-item .dot{width:8px;height:8px;background:rgba(255,255,255,0.85);}
+/* no pattern overlay on the hero — just the illustrated background */
+.home-v2 .hero-with-video .texture{display:none;}
