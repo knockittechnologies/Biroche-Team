@@ -1,7 +1,9 @@
+import { motion } from "framer-motion";
 import InteriorLayout from "../components/InteriorLayout";
-import Reveal from "../components/Reveal";
 import EnquiryForm from "../components/EnquiryForm";
+import { RevealTitle, FadeUp, ParallaxFrame, Rule, Eyebrow } from "../components/premium";
 import { INSTA } from "../lib/site";
+import "../events.css";
 
 const CELS = [
   { img: "/brioche/events-corporate-0.jpg", h: "Birthdays", p: "Make every birthday unforgettable with freshly prepared desserts, live serving stations, and crowd-favourite treats that guests will be talking about long after the candles have been blown out." },
@@ -20,90 +22,118 @@ const OFFERS = [
 ];
 
 export default function Events() {
+  const toForm = (e) => {
+    e.preventDefault();
+    const el = document.getElementById("enquiry");
+    if (window.__lenis && el) window.__lenis.scrollTo(el, { offset: -40 });
+    else el?.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <InteriorLayout insta={INSTA.events} breadcrumb="Events & Corporate">
-      <section className="page-hero sec-bg-orange">
+      <section className="pm-hero ev-hero">
         <div className="wrap">
-          <Reveal dir="up">
-            <span className="eyebrow">&#10022; Events &amp; Corporate</span>
-            <h1>Exceptional Desserts For Every Occasion</h1>
-            <p>From intimate celebrations to large-scale corporate events, The Brioche Team creates unforgettable dessert experiences that leave a lasting impression.</p>
-            <p>Whether you're planning a wedding, birthday celebration, private party, product launch, corporate gathering, festival, or staff appreciation event, our team delivers premium desserts, exceptional service, and a memorable experience tailored to your occasion.</p>
-          </Reveal>
+          <FadeUp inView={false} delay={0.15}><Eyebrow>Events &amp; Corporate</Eyebrow></FadeUp>
+          <RevealTitle text="Exceptional Desserts For Every Occasion" accent={["Every", "Occasion"]} />
+          <FadeUp inView={false} delay={0.9}>
+            <p className="pm-hero-lede">From intimate celebrations to large-scale corporate events, The Brioche Team creates unforgettable dessert experiences that leave a lasting impression.</p>
+            <p className="pm-hero-lede">Whether you're planning a wedding, birthday celebration, private party, product launch, corporate gathering, festival, or staff appreciation event, our team delivers premium desserts, exceptional service, and a memorable experience tailored to your occasion.</p>
+          </FadeUp>
+          <FadeUp inView={false} delay={1.1} className="ev-hero-ctas">
+            <a href="#enquiry" className="ev-btn dark" onClick={toForm}>Plan Your Event</a>
+          </FadeUp>
         </div>
       </section>
 
-      <section className="celebrations sec-bg-peach">
+      <section className="ev-cel pm-light">
         <div className="wrap">
-          <Reveal className="sec-head" dir="up">
-            <span className="eyebrow">&#10022; Events</span>
-            <h2>Celebrations Worth Remembering</h2>
-          </Reveal>
-          <div className="cel-grid">
+          <div className="ev-head">
+            <FadeUp><Eyebrow>Events</Eyebrow></FadeUp>
+            <RevealTitle as="h2" text="Celebrations Worth Remembering" accent={["Remembering"]} inView delay={0.1} />
+          </div>
+          <div className="ev-cel-grid">
             {CELS.map((c, i) => (
-              <Reveal className="cel-card" dir="up" delay={(i % 2) * 0.1} key={c.h}>
-                <img src={c.img} alt={c.h} loading="lazy" />
-                <div className="cel-card-text">
+              <motion.article
+                className="ev-cel-card"
+                key={c.h}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.9, delay: (i % 2) * 0.15, ease: [0.22, 0.61, 0.36, 1] }}
+              >
+                <div className="ev-cel-img">
+                  <img src={c.img} alt={c.h} loading="lazy" />
+                  <span className="ev-cel-num">{String(i + 1).padStart(2, "0")}</span>
+                </div>
+                <div className="ev-cel-body">
                   <h3>{c.h}</h3>
                   <p>{c.p}</p>
                 </div>
-              </Reveal>
+              </motion.article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="corporate sec-bg-peach">
-        <div className="wrap">
-          <Reveal className="corp-card" dir="up">
-            <div className="corp-photo">
-              <img src="/brioche/events-page-corporate.jpg" alt="Corporate celebration" loading="lazy" />
-            </div>
-            <div className="corp-text">
-              <h2>Corporate Events</h2>
-              <p>Impress Clients. Reward Teams. Elevate Experiences. The Brioche Team works with businesses, organisations, and event agencies across the UK to provide premium dessert catering for corporate occasions of every size.</p>
-              <h3>Perfect for:</h3>
-              <div className="perfect-grid">
-                {PERFECT.map((p) => <div key={p}>{p}</div>)}
-              </div>
-              <p className="closing">Our desserts provide a unique talking point that encourages engagement, creates memorable experiences, and leaves a lasting impression on clients, guests, and employees alike.</p>
-            </div>
-          </Reveal>
+      <section className="ev-corp">
+        <div className="wrap ev-corp-grid">
+          <div className="ev-corp-media">
+            <ParallaxFrame src="/brioche/events-page-corporate.jpg" alt="Corporate celebration" ratio="4 / 5" range={36} />
+          </div>
+          <div className="ev-corp-text">
+            <FadeUp><Eyebrow>Corporate</Eyebrow></FadeUp>
+            <RevealTitle as="h2" text="Corporate Events" accent={["Events"]} inView delay={0.1} />
+            <FadeUp delay={0.2}><p className="ev-tagline">Impress Clients. Reward Teams. Elevate Experiences.</p></FadeUp>
+            <FadeUp delay={0.28}><p>The Brioche Team works with businesses, organisations, and event agencies across the UK to provide premium dessert catering for corporate occasions of every size.</p></FadeUp>
+            <Rule />
+            <h3>Perfect for</h3>
+            <motion.ul className="ev-chips" initial="hide" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={{ show: { transition: { staggerChildren: 0.05 } } }}>
+              {PERFECT.map((p) => (
+                <motion.li key={p} variants={{ hide: { opacity: 0, y: 12, scale: 0.96 }, show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.45 } } }}>{p}</motion.li>
+              ))}
+            </motion.ul>
+            <FadeUp delay={0.2}><p className="ev-closing">Our desserts provide a unique talking point that encourages engagement, creates memorable experiences, and leaves a lasting impression on clients, guests, and employees alike.</p></FadeUp>
+          </div>
         </div>
       </section>
 
-      <section className="offer">
+      <section className="ev-offer pm-light">
         <div className="wrap">
-          <Reveal className="sec-head" dir="up">
-            <span className="eyebrow">&#10022; Our Story</span>
-            <h2>What We Offer</h2>
-          </Reveal>
-          <div className="offer-grid">
+          <div className="ev-head">
+            <FadeUp><Eyebrow>Our Services</Eyebrow></FadeUp>
+            <RevealTitle as="h2" text="What We Offer" accent={["Offer"]} inView delay={0.1} />
+          </div>
+          <div className="ev-offer-grid">
             {OFFERS.map((o, i) => (
-              <Reveal className="offer-item" dir="up" delay={(i % 2) * 0.1} key={o.h}>
-                <div className="offer-icon">{o.icon}</div>
-                <div>
-                  <h3>{o.h}</h3>
-                  <p>{o.p}</p>
-                </div>
-              </Reveal>
+              <motion.div
+                className="ev-offer-card"
+                key={o.h}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.8, delay: i * 0.1, ease: [0.22, 0.61, 0.36, 1] }}
+              >
+                <div className="ev-offer-icon">{o.icon}</div>
+                <span className="ev-offer-num">{String(i + 1).padStart(2, "0")}</span>
+                <h3>{o.h}</h3>
+                <p>{o.p}</p>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="enquiry sec-bg-orange" id="enquiry">
+      <section className="enquiry sec-bg-orange pm-enquiry" id="enquiry">
         <div className="wrap enquiry-grid">
-          <Reveal className="enquiry-left" dir="left">
-            <span className="eyebrow">&#10022; Enquiry</span>
-            <h2>Enquiry About Your Event</h2>
-            <h3>Planning an upcoming event?</h3>
-            <p>Our team would love to learn more about your requirements and create a bespoke package tailored to your occasion.</p>
-          </Reveal>
-          <Reveal className="enquiry-right" dir="right">
+          <div className="enquiry-left">
+            <FadeUp><Eyebrow>Enquiry</Eyebrow></FadeUp>
+            <FadeUp delay={0.1}><h2>Enquiry About Your Event</h2></FadeUp>
+            <FadeUp delay={0.2}><h3>Planning an upcoming event?</h3></FadeUp>
+            <FadeUp delay={0.3}><p>Our team would love to learn more about your requirements and create a bespoke package tailored to your occasion.</p></FadeUp>
+          </div>
+          <FadeUp className="enquiry-right" delay={0.15}>
             <h2>Enquiry Form</h2>
             <EnquiryForm type="event" />
-          </Reveal>
+          </FadeUp>
         </div>
       </section>
     </InteriorLayout>

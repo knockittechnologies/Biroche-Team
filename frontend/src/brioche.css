@@ -291,7 +291,7 @@ body{font-family:var(--font-body);color:var(--ink);-webkit-font-smoothing:antial
   .hero-scrub-track{width:100%;margin-left:0;}
   .hero-video-stage{width:100%;min-width:0;max-width:100%;}
   .hero-scrub-sticky{overflow:hidden;width:100vw;margin-left:calc(50% - 50vw);}
-  .hero-scrub-wrap{width:min(118vw,560px);flex:none;margin:0;left:50%;transform:translate(-50%, calc(-1 * min(90px, 11vh)));align-self:flex-start;}
+  .hero-scrub-wrap{width:min(100vw,480px);flex:none;margin:0;left:50%;transform:translate(-50%, calc(-1 * min(90px, 11vh)));align-self:flex-start;}
   .hero-video-stage-flanked .hero-scroll-indicator-side.left{display:none;}
   .hero-scrub-wrap .hero-video{width:100%;max-width:100%;}
   .hero-video-stage-flanked .hero-scroll-indicator-side{position:static;transform:none;}
