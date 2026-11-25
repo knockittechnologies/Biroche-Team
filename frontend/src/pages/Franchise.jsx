@@ -89,28 +89,47 @@ export default function Franchise() {
         </div>
       </section>
 
-      <section className="story sec-bg-orange" ref={storyRef}>
+      <section className="frs" ref={storyRef}>
+        <div className="frs-glow" aria-hidden="true" />
         <div className="wrap">
-          <Reveal className="story-head" dir="pop">
-            <span className="eyebrow" style={{ justifyContent: "center" }}>&#10022; Our Story</span>
+          <Reveal className="frs-head" dir="up">
+            <span className="frs-eyebrow"><i>&#10022;</i> Our Story</span>
             <h2>Our Story</h2>
           </Reveal>
-          <div className="story-grid">
-            <Reveal className="story-col-left" dir="left">
-              <h3>From Redundancy to Revolution.</h3>
-              <p>Two brothers lost their careers. Instead of searching for another job, they built a new future.</p>
-              <motion.img style={{ y: storyUp }} src="/brioche/franchise-0-cut.png" alt="Caramel cheesecake slice" loading="lazy" />
-            </Reveal>
-            <Reveal className="story-col-center fr-story-center" dir="pop" delay={0.1}>
-              <img src="/brioche/story-bowl.webp" alt="Brioche Bites bowl with chocolate and caramel drizzle" loading="lazy" />
-            </Reveal>
-            <Reveal className="story-col-right" dir="right" delay={0.2}>
-              <motion.img style={{ y: storyDown }} src="/brioche/franchise-2-cut.png" alt="Tiramisu and croissant" loading="lazy" />
-              <p>Driven by a lifelong passion for baking and years spent perfecting recipes behind closed doors, they created something the dessert world had never seen before.</p>
-              <p className="bold-line">The original Brioche Bites.</p>
-            </Reveal>
+
+          <div className="frs-grid">
+            <div className="frs-left">
+              <Reveal dir="left">
+                <h3>From Redundancy to Revolution.</h3>
+                <p>Two brothers lost their careers. Instead of searching for another job, they built a new future.</p>
+              </Reveal>
+              <motion.div className="frs-card frs-cheesecake" style={{ y: storyUp }}
+                initial={{ opacity: 0, x: -50, rotate: -4 }} whileInView={{ opacity: 1, x: 0, rotate: 0 }}
+                viewport={{ once: true, amount: 0.3 }} transition={{ duration: 1, ease: [0.22, 0.61, 0.36, 1] }}>
+                <img src="/brioche/story/story-cheesecake.webp" alt="Biscoff cheesecake with ice cream and caramel" loading="lazy" />
+              </motion.div>
+            </div>
+
+            <motion.div className="frs-center"
+              initial={{ opacity: 0, y: 60, scale: 0.94 }} whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.3 }} transition={{ duration: 1.1, ease: [0.22, 0.61, 0.36, 1] }}>
+              <img src="/brioche/story/story-bowl-card.webp" alt="Brioche Bites bowl with chocolate and caramel drizzle" loading="lazy" />
+            </motion.div>
+
+            <div className="frs-right">
+              <motion.div className="frs-card frs-tiramisu" style={{ y: storyDown }}
+                initial={{ opacity: 0, x: 50, rotate: 4 }} whileInView={{ opacity: 1, x: 0, rotate: 0 }}
+                viewport={{ once: true, amount: 0.3 }} transition={{ duration: 1, delay: 0.15, ease: [0.22, 0.61, 0.36, 1] }}>
+                <img src="/brioche/story/story-tiramisu.webp" alt="Tiramisu and chocolate croissant" loading="lazy" />
+              </motion.div>
+              <Reveal dir="right" delay={0.2}>
+                <p>Driven by a lifelong passion for baking and years spent perfecting recipes behind closed doors, they created something the dessert world had never seen before.</p>
+                <p className="frs-strong">The original Brioche Bites.</p>
+              </Reveal>
+            </div>
           </div>
-          <Reveal as="p" className="story-footer-text" dir="up">
+
+          <Reveal as="p" className="frs-foot" dir="up">
             Soon after came our signature Banana Pudding, crafted from a closely guarded recipe that has quickly become the dessert people travel across the UK to experience. Today, The Brioche Team is becoming one of Britain's most exciting premium dessert concepts, built on craftsmanship, innovation and unforgettable customer experiences.
           </Reveal>
         </div>
