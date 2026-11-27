@@ -57,16 +57,27 @@ const DOODLES_M = [
   { src: "/brioche/hero/doodles/m6.webp", l: 79.0, t: 67.769, w: 21.0, dur: 8, delay: -2.2, dy: -40, dx: -18, rot: -4.5 },
 ];
 
+// Drawings are placed from the nearest screen edge and sized against the
+// background's "contain" width (--s), so they stay fully visible at any window size.
 const Doodles = ({ list }) =>
-  list.map((d, i) => (
-    <img
-      key={i}
-      className="hero-doodle"
-      src={d.src}
-      alt=""
-      style={{ left: d.l + "%", top: d.t + "%", width: d.w + "%", "--dur": d.dur + "s", "--delay": d.delay + "s", "--dy": d.dy + "px", "--dx": d.dx + "px", "--rot": d.rot + "deg" }}
-    />
-  ));
+  list.map((d, i) => {
+    const leftSide = d.l + d.w / 2 < 50;
+    const edge = leftSide ? d.l : 100 - d.l - d.w;
+    return (
+      <img
+        key={i}
+        className="hero-doodle"
+        src={d.src}
+        alt=""
+        style={{
+          top: d.t + "%",
+          width: `calc(var(--s) * ${d.w / 100})`,
+          [leftSide ? "left" : "right"]: `calc(var(--s) * ${edge / 100})`,
+          "--dur": d.dur + "s", "--delay": d.delay + "s", "--dy": d.dy + "px", "--dx": d.dx + "px", "--rot": d.rot + "deg",
+        }}
+      />
+    );
+  });
 
 export default function Home() {
   const heroRef = useRef(null);
@@ -98,12 +109,10 @@ export default function Home() {
             with the dessert drawings floating on top of it */}
         <div className="hero-art" aria-hidden="true">
           <div className="hero-art-pin">
-            <div className="hero-art-stage d" style={{ backgroundImage: "url(/brioche/hero/hero-illustrated-bg.jpg)" }}>
-              <Doodles list={DOODLES_D} />
-            </div>
-            <div className="hero-art-stage m" style={{ backgroundImage: "url(/brioche/hero/hero-bg-mobile.jpg)" }}>
-              <Doodles list={DOODLES_M} />
-            </div>
+            <div className="hero-art-stage d" style={{ backgroundImage: "url(/brioche/hero/hero-illustrated-bg.jpg)" }} />
+            <div className="hero-art-stage m" style={{ backgroundImage: "url(/brioche/hero/hero-bg-mobile.jpg)" }} />
+            <div className="hero-doodles d"><Doodles list={DOODLES_D} /></div>
+            <div className="hero-doodles m"><Doodles list={DOODLES_M} /></div>
           </div>
         </div>
         <motion.div className="texture" style={{ y: textureY }} />
@@ -147,7 +156,7 @@ export default function Home() {
                   <span className="hsi-label">Scroll Down</span>
                   <span className="hsi-line" />
                   <span className="hsi-chev">
-                    <ChevronDown size={16} strokeWidth={1.6} />
+                    <ChevronDown size={26} strokeWidth={3} />
                   </span>
                 </motion.button>
 
@@ -167,7 +176,7 @@ export default function Home() {
                   <span className="hsi-label">Scroll Down</span>
                   <span className="hsi-line" />
                   <span className="hsi-chev">
-                    <ChevronDown size={16} strokeWidth={1.6} />
+                    <ChevronDown size={26} strokeWidth={3} />
                   </span>
                 </motion.button>
               </motion.div>

@@ -178,3 +178,56 @@
 }
 @media (max-width:860px){.hero-doodle{--amp:.6;}}
 @media (prefers-reduced-motion: reduce){.hero-doodle{animation:none;}}
+
+/* Floating drawings: own viewport-sized layer, anchored to the screen edges */
+.hero-doodles{position:absolute;inset:0;}
+.hero-doodles.d{--s:min(100vw, calc(100vh * 2.0594));}
+.hero-doodles.m{display:none;--s:min(100vw, calc(100svh * 0.4615));}
+@media (max-width:1200px){.hero-doodles.d{--s:min(92vw, calc(100vh * 2.0594));}}
+@media (max-width:860px){
+  .hero-doodles.d{display:none;}
+  .hero-doodles.m{display:block;}
+}
+
+/* ===== Premium "Scroll Down" indicators ===== */
+.home-v2 .hero-scroll-indicator-side{gap:14px;font-family:var(--font-body);}
+.home-v2 .hero-scroll-indicator-side .hsi-label{display:block !important;font-size:12.5px;font-weight:700;letter-spacing:.28em;}
+.home-v2 .hero-scroll-indicator-side .hsi-line{display:block;width:1px;height:26px;opacity:1;
+  background:linear-gradient(currentColor,transparent);}
+.home-v2 .hero-scroll-indicator-side .hsi-chev{
+  position:relative;width:56px;height:56px;border-radius:50%;
+  display:grid;place-items:center;
+  border:1.6px solid currentColor;
+  background:rgba(255,255,255,0.10);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  box-shadow:0 14px 30px -14px rgba(60,15,0,0.6);
+  animation:none;transition:transform .4s cubic-bezier(.22,.61,.36,1),background .4s ease;
+}
+.home-v2 .hero-scroll-indicator-side .hsi-chev svg{animation:hsi-bounce 1.8s ease-in-out infinite;}
+.home-v2 .hero-scroll-indicator-side .hsi-chev::after{
+  content:"";position:absolute;inset:-1.6px;border-radius:50%;border:1.6px solid currentColor;
+  animation:hsi-ring 2.4s ease-out infinite;
+}
+.home-v2 .hero-scroll-indicator-side:hover .hsi-chev{transform:translateY(3px);background:rgba(255,255,255,0.2);}
+@keyframes hsi-bounce{0%,100%{transform:translateY(-3px)}50%{transform:translateY(4px)}}
+@keyframes hsi-ring{0%{transform:scale(1);opacity:.55}100%{transform:scale(1.55);opacity:0}}
+@media (max-width:1100px){
+  .home-v2 .hero-scroll-indicator-side .hsi-label{font-size:11px;letter-spacing:.22em;}
+  .home-v2 .hero-scroll-indicator-side .hsi-chev{width:48px;height:48px;}
+}
+@media (max-width:700px){
+  .home-v2 .hero-scroll-indicator-side{flex-direction:column;gap:10px;}
+  .home-v2 .hero-scroll-indicator-side .hsi-line{display:none;}
+  .home-v2 .hero-scroll-indicator-side .hsi-chev{width:44px;height:44px;}
+}
+@media (prefers-reduced-motion: reduce){
+  .home-v2 .hero-scroll-indicator-side .hsi-chev svg,.home-v2 .hero-scroll-indicator-side .hsi-chev::after{animation:none;}
+}
+/* bolder: solid cream disc with a brand-orange arrow */
+.home-v2 .hero-scroll-indicator-side .hsi-label{font-size:13px;}
+.home-v2 .hero-scroll-indicator-side .hsi-chev{background:#FFF4E8;color:var(--orange);border-color:#FFF4E8;
+  box-shadow:0 16px 34px -12px rgba(60,15,0,0.65);}
+.home-v2 .hero-scroll-indicator-side .hsi-chev::after{border-color:rgba(255,244,232,0.85);}
+.home-v2 .hero-scroll-indicator-side:hover .hsi-chev{background:#fff;}
+@media (max-width:1100px){.home-v2 .hero-scroll-indicator-side .hsi-label{font-size:11.5px;}}
+.home-v2 .hero-scroll-indicator-side .hsi-chev svg{width:32px;height:32px;}
